@@ -156,3 +156,6 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 
 #Enable LM
 TARGET_USES_LM := true
+
+#Generate DTBO image
+BOARD_KERNEL_SEPARATED_DTBO := true
