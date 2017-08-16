@@ -38,10 +38,11 @@ on init
     write /dev/stune/system-background/schedtune.colocate 0
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
 on fs
     wait /dev/block/bootdevice
-    mount_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
 
@@ -50,18 +51,25 @@ on post-fs
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
+service sec_nvm /vendor/bin/sec_nvm
+    class core
+    user system
+    group system
+
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
-    mkdir /data/misc/hbtp 0750 system system
+    mkdir /data/vendor/hbtp 0750 system system
     mkdir /persist/qti_fp 0700 system system
+    mkdir /data/misc/seemp 0700 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
+    chown system system /sys/kernel/hbtp/display_pwr
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-3
@@ -85,7 +93,7 @@ on boot
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
 #Load WLAN driver
-    insmod /system/lib/modules/qca_cld3/qca_cld3_wlan.ko
+    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #start camera server as daemon
 #service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -117,6 +125,9 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
+on charger
+    start hvdcp_opti
+
 ## import cne init file
 #on post-fs
 #    export LD_PRELOAD /vendor/lib/libNimsWrap.so
@@ -133,7 +144,12 @@ service qseecomd /vendor/bin/qseecomd
     user root
     group root
 
-#service mpdecision /system/bin/mpdecision --avg_comp
+service spdaemon /vendor/bin/spdaemon
+    class core
+    user system
+    group system
+
+#service mpdecision /system/vendor/bin/mpdecision --avg_comp
 #   user root
 #   disabled
 #
@@ -158,32 +174,32 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #    class core
 #    oneshot
 #
-#service time_daemon /system/bin/time_daemon
+#service time_daemon /system/vendor/bin/time_daemon
 #   class late_start
 #   user root
 #   group root
 
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
 
-#service audiod /system/bin/audiod
+#service audiod /vendor/bin/audiod
 #   class late_start
 #   user system
 #   group system
 #
-#service usf_tester /system/bin/usf_tester
+#service usf_tester /vendor/bin/usf_tester
 #    user system
 #    group system inet
 #    disabled
 #
-#service usf_epos /system/bin/usf_epos
+#service usf_epos /vendor/bin/usf_epos
 #    user system
 #    group system inet
 #    disabled
 #
-#service usf_gesture /system/bin/usf_gesture
+#service usf_gesture /vendor/bin/usf_gesture
 #    user system
 #    group system inet
 #    disabled
@@ -200,7 +216,7 @@ service adsprpcd /system/bin/adsprpcd
 #    group system inet
 #    disabled
 #
-#service usf_hovering /system/bin/usf_hovering
+#service usf_hovering /vendor/bin/usf_hovering
 #    user system
 #    group system inet
 #    disabled
@@ -210,7 +226,7 @@ service adsprpcd /system/bin/adsprpcd
 #    group system inet
 #    disabled
 #
-#service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
+#service usf-post-boot /system/vendor/bin/sh /system/etc/usf_post_boot.sh
 #    class late_start
 #    user root
 #    disabled
@@ -234,19 +250,22 @@ service adsprpcd /system/bin/adsprpcd
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
 #
 #
+#
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
     group system wifi radio inet log diag
     disabled
-#
+
 #service mdm_helper /system/bin/mdm_helper
 #    class core
 #    onrestart setprop ro.service.mdm_helper_restarted "true"
@@ -300,45 +319,48 @@ service imsdatadaemon /system/vendor/bin/imsdatadaemon
 #   group gps system qcom_diag diag log inet net_raw
 #   disabled
 
+service imsrcsservice /system/vendor/bin/imsrcsd
+    class main
+    user system
+    group radio diag inet log
+    disabled
+
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
-#
+
 service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
    user system
    group radio diag inet log
    disabled
 
-service imsrcsservice /system/vendor/bin/imsrcsd
-   class main
-   user system
-   group radio diag inet log
-   disabled
-#
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
     start imsrcsservice
-#
-#service ppd /system/bin/mm-pp-daemon
-#    class late_start
-#    disabled
-#    user system
-#    socket pps stream 0660 system system
-#    group system graphics
-#
-#on property:init.svc.surfaceflinger=stopped
-#    stop ppd
-#
-#on property:init.svc.surfaceflinger=running
-#    start ppd
-#
+
+service ppd /vendor/bin/mm-pp-dpps
+    class late_start
+    user system
+    group system graphics
+    socket pps stream 0660 system system
+    disabled
+
+on property:init.svc.hwcomposer-2-1=stopped
+    stop ppd
+
+on property:init.svc.hwcomposer-2-1=running
+    start ppd
+
+on property:init.svc.hwcomposer-2-1=restarting
+    stop ppd
+
 #service nqs /system/bin/nqs
 #    class late_start
 #    socket nqs_qsb_comm stream 660 system system
 #    user system
 #    group drmrpc
 #
-#service adsprpcd /system/bin/adsprpcd
+#service adsprpcd /system/vendor/bin/adsprpcd
 #   class main
 #   user media
 #   group media
@@ -356,18 +378,24 @@ service hbtp /system/vendor/bin/hbtp_daemon
      group system
      disabled
 
-service qfp-daemon /system/vendor/bin/qfp-daemon
+service qfp-daemon /vendor/bin/qfp-daemon
     class late_start
     user system
     group system drmrpc diag input
 
-service fps_hal /system/vendor/bin/fingerprint.qcom
-    class late_start
-    user system
-    group system input
-
-service energy-awareness /system/bin/energy-awareness
+service energy-awareness /system/vendor/bin/energy-awareness
     class main
     user system
     group system
     oneshot
+
+service seempd /system/bin/seempd
+    class late_start
+    user system
+    group system sdcard_rw
+    socket seempdw dgram 0666 system system
+
+service hvdcp_opti /system/vendor/bin/hvdcp_opti
+    class main
+    user root
+    group system wakelock

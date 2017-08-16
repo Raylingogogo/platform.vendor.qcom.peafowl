@@ -18,6 +18,10 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
 
+#Enable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
+
 BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
 
 TARGET_NO_BOOTLOADER := false
@@ -25,7 +29,6 @@ TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 BOARD_PRESIL_BUILD := true
 -include $(QCPATH)/common/msmpeafowl/BoardConfigVendor.mk
-MINIMAL_FONT_FOOTPRINT := true
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := false
@@ -61,7 +64,7 @@ TARGET_RECOVERY_FSTAB := device/qcom/msmpeafowl/recovery_vendor_variant.fstab
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
-VENDOR_FSTAB_ENTRY := "/dev/block/bootdevice/by-name/vendor                      /vendor                     ext4   ro,barrier=1,discard                               wait,slotselect"
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 else
 TARGET_RECOVERY_FSTAB := device/qcom/msmpeafowl/recovery.fstab
 endif
@@ -70,8 +73,15 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
+BOARD_DTBOIMAGE_PARTITION_SIZE := 0x0800000
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+
+BOARD_VENDOR_KERNEL_MODULES := \
+    $(KERNEL_MODULES_OUT)/wil6210.ko \
+    $(KERNEL_MODULES_OUT)/msm_11ad_proxy.ko \
+    $(KERNEL_MODULES_OUT)/qca_cld3_wlan.ko
+
 
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
@@ -129,9 +139,17 @@ endif
 
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
+TARGET_USES_QCOM_DISPLAY_BSP := true
+TARGET_USES_COLOR_METADATA := true
 
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true
 
+#Enable QTI specific Camera2Client layer
+TARGET_USES_QTI_CAMERA2CLIENT := true
+
 #Add non-hlos files to ota packages
 ADD_RADIO_FILES := true
+
+#To use libhealthd.msm instead of libhealthd.default
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
