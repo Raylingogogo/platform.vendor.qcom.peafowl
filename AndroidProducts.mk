@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/msmpeafowl.mk
+	$(LOCAL_DIR)/sdm670.mk

@@ -4,10 +4,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common64.mk)
 
-PRODUCT_NAME := msmpeafowl
-PRODUCT_DEVICE := msmpeafowl
+PRODUCT_NAME := sdm670
+PRODUCT_DEVICE := sdm670
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := MSMPeafowl for arm64
+PRODUCT_MODEL := SDM670 for arm64
 
 #Initial bringup flags
 TARGET_USES_AOSP := true
@@ -22,7 +22,7 @@ endif
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
 #Comment on msm8998 tree says that QTIC does not
 # yet support system/vendor split. So disabling it
-# for msmpeafowl as well
+# for sdm670 as well
 #TARGET_USES_QTIC := false
 
 endif
@@ -42,8 +42,8 @@ PRODUCT_PACKAGES += libGLES_android
 
 # Video seccomp policy files
 PRODUCT_COPY_FILES += \
-    device/qcom/msmpeafowl/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    device/qcom/msmpeafowl/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+    device/qcom/sdm670/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/qcom/sdm670/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 PRODUCT_BOOT_JARS += tcmiface
 PRODUCT_BOOT_JARS += telephony-ext
@@ -70,17 +70,17 @@ PRODUCT_COPY_FILES += hardware/qcom/media/conf_files/sdm845/system_properties.xm
 
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msmpeafowl/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
+PRODUCT_COPY_FILES += device/qcom/sdm670/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
-PRODUCT_COPY_FILES += device/qcom/msmpeafowl/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
 
-PRODUCT_COPY_FILES += device/qcom/msmpeafowl/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
 # Audio configuration file
--include $(TOPDIR)hardware/qcom/audio/configs/msmpeafowl/msmpeafowl.mk
+-include $(TOPDIR)hardware/qcom/audio/configs/sdm670/sdm670.mk
 
 PRODUCT_PACKAGES += fs_config_files
 
@@ -88,7 +88,7 @@ PRODUCT_PACKAGES += fs_config_files
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
     update_verifier \
-    bootctrl.msmpeafowl \
+    bootctrl.sdm670 \
     brillo_update_payload \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
@@ -107,7 +107,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
 
-DEVICE_MANIFEST_FILE := device/qcom/msmpeafowl/manifest.xml
+DEVICE_MANIFEST_FILE := device/qcom/sdm670/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
 #ANT+ stack
@@ -133,7 +133,7 @@ PRODUCT_PACKAGES += \
 
 # FBE support
 PRODUCT_COPY_FILES += \
-    device/qcom/msmpeafowl/init.qti.qseecomd.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.qseecomd.sh
+    device/qcom/sdm670/init.qti.qseecomd.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/sdm845/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
@@ -152,8 +152,8 @@ endif
 
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msmpeafowl/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msmpeafowl/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt
+    device/qcom/sdm670/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/qcom/sdm670/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
@@ -170,7 +170,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor conf files
 PRODUCT_COPY_FILES += \
-    device/qcom/msmpeafowl/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    device/qcom/sdm670/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \

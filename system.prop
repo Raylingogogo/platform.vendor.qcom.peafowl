@@ -1,5 +1,5 @@
 #
-# system.prop for msmpeafowl
+# system.prop for sdm670
 #
 
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so

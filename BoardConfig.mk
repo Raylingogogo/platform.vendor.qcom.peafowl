@@ -3,8 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_PLATFORM := msmpeafowl
-TARGET_BOOTLOADER_BOARD_NAME := msmpeafowl
+TARGET_BOARD_PLATFORM := sdm670
+TARGET_BOOTLOADER_BOARD_NAME := sdm670
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -28,7 +28,7 @@ TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 BOARD_PRESIL_BUILD := true
--include $(QCPATH)/common/msmpeafowl/BoardConfigVendor.mk
+-include $(QCPATH)/common/sdm670/BoardConfigVendor.mk
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := false
@@ -60,13 +60,13 @@ endif
 #Enable split vendor image
 ENABLE_VENDOR_IMAGE := true
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
-TARGET_RECOVERY_FSTAB := device/qcom/msmpeafowl/recovery_vendor_variant.fstab
+TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_vendor_variant.fstab
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 else
-TARGET_RECOVERY_FSTAB := device/qcom/msmpeafowl/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery.fstab
 endif
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
