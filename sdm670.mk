@@ -75,8 +75,10 @@ ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/qcom/sdm670/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
 PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs_sdm670_v0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_sdm670_v0.xml
 
 PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/qcom/sdm670/media_codecs_performance_sdm670_v0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_sdm670_v0.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
