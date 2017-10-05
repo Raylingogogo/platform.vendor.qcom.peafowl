@@ -153,3 +153,6 @@ ADD_RADIO_FILES := true
 
 #To use libhealthd.msm instead of libhealthd.default
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
+
+#Enable LM
+TARGET_USES_LM := true
