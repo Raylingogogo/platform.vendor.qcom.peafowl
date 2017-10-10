@@ -254,3 +254,7 @@ endif
 
 #Enable DuerOS for voiceUI
 BOARD_VOICEUI_USE_DUEROS := true
+
+#Thermal
+PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
+                    android.hardware.thermal@1.0-service
