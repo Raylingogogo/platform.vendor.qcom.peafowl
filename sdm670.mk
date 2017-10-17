@@ -183,6 +183,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
+#Enable debug libraries
+ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+PRODUCT_PACKAGES += libstagefright_debug \
+                    libmediaplayerservice_debug
+endif
 
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
