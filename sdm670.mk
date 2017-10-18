@@ -15,7 +15,7 @@ TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 BOARD_HAVE_QCOM_FM := true
 
-DEVICE_PACKAGE_OVERLAYS := device/qcom/sdm670/overlay
+DEVICE_PACKAGE_OVERLAYS += device/qcom/sdm670/overlay
 
 #Default vendor image configuration
 ifeq ($(ENABLE_VENDOR_IMAGE),)
