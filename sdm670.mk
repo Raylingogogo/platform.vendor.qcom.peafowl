@@ -1,3 +1,6 @@
+# Enable AVB 2.0
+BOARD_AVB_ENABLE := true
+
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
   dalvik.vm.heapgrowthlimit=256m
