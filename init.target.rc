@@ -178,7 +178,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
 
 service adsprpcd /vendor/bin/adsprpcd
    class main
-   user media
+   user root
    group media
 
 service adsprpcd_audiopd /vendor/bin/adsprpcd audiopd
