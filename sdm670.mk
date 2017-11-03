@@ -216,3 +216,6 @@ KMGK_USE_QTI_SERVICE := true
 ifneq ($(BOARD_AVB_ENABLE), true)
     PRODUCT_SUPPORTS_VERITY := true
 endif
+
+#Enable DuerOS for voiceUI
+BOARD_VOICEUI_USE_DUEROS := true
