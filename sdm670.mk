@@ -214,6 +214,12 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 
 PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 
+#Set property to enable zRam
+PRODUCT_PROPERTY_OVERRIDES += ro.vendor.qti.config.zram=true
+
+#Property to set BG App limit
+PRODUCT_PROPERTY_OVERRIDES += ro.vendor.qti.sys.fw.bg_apps_limit=60
+
 #Enable QTI KEYMASTER and GATEKEEPER HIDLs
 KMGK_USE_QTI_SERVICE := true
 
