@@ -304,7 +304,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
         <impl level="generic"></impl>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>ILocHidlGnss</name>
             <instance>gnss_vendor</instance>
