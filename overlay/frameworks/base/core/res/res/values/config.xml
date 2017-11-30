@@ -45,5 +45,10 @@
         <item>"softap1"</item>
         <item>"softap2"</item>
     </string-array>
+
+    <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
+    <integer name="config_sms_authorization_timeout_ms">15000</integer>
+    <!-- Enable SMS authorization support -->
+    <bool name="config_sms_authorization_enabled">true</bool>
 </resources>
 
