@@ -111,7 +111,8 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_msm_sdw.ko \
     $(KERNEL_MODULES_OUT)/audio_native.ko \
     $(KERNEL_MODULES_OUT)/audio_machine_sdm670.ko \
-    $(KERNEL_MODULES_OUT)/llcc_perfmon.ko
+    $(KERNEL_MODULES_OUT)/llcc_perfmon.ko \
+    $(KERNEL_MODULES_OUT)/rdbg.ko
 
 # Enable suspend during charger mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
