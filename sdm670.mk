@@ -20,17 +20,9 @@ BOARD_HAVE_QCOM_FM := true
 
 DEVICE_PACKAGE_OVERLAYS += device/qcom/sdm670/overlay
 
-#Default vendor image configuration
-ifeq ($(ENABLE_VENDOR_IMAGE),)
-ENABLE_VENDOR_IMAGE := false
-endif
-ifeq ($(ENABLE_VENDOR_IMAGE), true)
-#Comment on msm8998 tree says that QTIC does not
-# yet support system/vendor split. So disabling it
-# for sdm670 as well
-#TARGET_USES_QTIC := false
+# Default A/B configuration.
+ENABLE_AB ?= true
 
-endif
 TARGET_KERNEL_VERSION := 4.9
 
 TARGET_USES_NQ_NFC := true
@@ -94,6 +86,7 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
 PRODUCT_PACKAGES += fs_config_files
 
+ifeq ($(ENABLE_AB), true)
 #A/B related packages
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
@@ -105,6 +98,7 @@ PRODUCT_PACKAGES += update_engine \
 
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
+endif
 
 #Healthd packages
 PRODUCT_PACKAGES += \

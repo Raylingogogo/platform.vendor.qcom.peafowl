@@ -39,6 +39,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/qcom/common
 USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
+ifeq ($(ENABLE_AB), true)
 # Defines for enabling A/B builds
 AB_OTA_UPDATER := true
 # Full A/B partition update set
@@ -51,6 +52,18 @@ AB_OTA_PARTITIONS ?= boot system
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 TARGET_NO_RECOVERY := true
 BOARD_USES_RECOVERY_AS_BOOT := true
+else
+# Non-A/B section. Define cache and recovery partition variables.
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
+BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+endif
+
+ifeq ($(ENABLE_AB), true)
+    TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_AB_variant.fstab
+else
+    TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_non-AB_variant.fstab
+endif
 
 #Enable compilation of oem-extensions to recovery
 #These need to be explicitly 
@@ -63,15 +76,11 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 #Enable split vendor image
 ENABLE_VENDOR_IMAGE := true
-ifeq ($(ENABLE_VENDOR_IMAGE), true)
-TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_vendor_variant.fstab
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-else
-TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery.fstab
-endif
+
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
@@ -195,3 +204,8 @@ TARGET_USES_LM := true
 
 #Generate DTBO image
 BOARD_KERNEL_SEPARATED_DTBO := true
+
+
+ifeq ($(ENABLE_VENDOR_IMAGE), false)
+$(error "Vendor Image is mandatory !!")
+endif
