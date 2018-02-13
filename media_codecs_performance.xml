@@ -124,11 +124,11 @@ limitations under the License.
             <Limit name="measured-frame-rate-352x288" range="200-200" />
         </MediaCodec>
         <MediaCodec name="OMX.google.hevc.decoder" type="video/hevc" update="true">
-            <Limit name="measured-frame-rate-352x288" range="170-170" />
-            <Limit name="measured-frame-rate-640x360" range="89-89" />
-            <Limit name="measured-frame-rate-720x480" range="73-73" />
-            <Limit name="measured-frame-rate-1280x720" range="32-32" />
-            <Limit name="measured-frame-rate-1920x1080" range="21-21" />
+            <Limit name="measured-frame-rate-352x288" range="320-350" />
+            <Limit name="measured-frame-rate-640x360" range="150-180" />
+            <Limit name="measured-frame-rate-720x480" range="130-170" />
+            <Limit name="measured-frame-rate-1280x720" range="80-110" />
+            <Limit name="measured-frame-rate-1920x1080" range="45-55" />
         </MediaCodec>
         <MediaCodec name="OMX.google.mpeg4.decoder" update="true">
             <Type name="video/mp4v-es">
