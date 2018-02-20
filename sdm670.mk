@@ -238,6 +238,9 @@ PRODUCT_PROPERTY_OVERRIDES += ro.vendor.qti.config.zram=true
 #Property to set BG App limit
 PRODUCT_PROPERTY_OVERRIDES += ro.vendor.qti.sys.fw.bg_apps_limit=60
 
+#Property to enable IO cgroups
+PRODUCT_PROPERTY_OVERRIDES += ro.vendor.iocgrp.config=1
+
 #Property for enabling learning module
 PRODUCT_PROPERTY_OVERRIDES += debug.vendor.qti.enable.lm=1
 
