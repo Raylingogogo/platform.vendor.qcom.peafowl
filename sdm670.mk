@@ -245,6 +245,9 @@ PRODUCT_PROPERTY_OVERRIDES += ro.vendor.iocgrp.config=1
 #Property for enabling learning module
 PRODUCT_PROPERTY_OVERRIDES += debug.vendor.qti.enable.lm=1
 
+#Property for setting the max timeout of autosuspend
+PRODUCT_PROPERTY_OVERRIDES += sys.autosuspend.timeout=500000
+
 #Enable QTI KEYMASTER and GATEKEEPER HIDLs
 KMGK_USE_QTI_SERVICE := true
 
