@@ -3,8 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_PLATFORM := sdm670
-TARGET_BOOTLOADER_BOARD_NAME := sdm670
+TARGET_BOARD_PLATFORM := sdm710
+TARGET_BOOTLOADER_BOARD_NAME := sdm710
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -29,7 +29,7 @@ TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 BOARD_PRESIL_BUILD := true
--include $(QCPATH)/common/sdm670/BoardConfigVendor.mk
+-include $(QCPATH)/common/sdm710/BoardConfigVendor.mk
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := false
@@ -60,9 +60,9 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 endif
 
 ifeq ($(ENABLE_AB), true)
-    TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_AB_variant.fstab
+    TARGET_RECOVERY_FSTAB := device/qcom/sdm710/recovery_AB_variant.fstab
 else
-    TARGET_RECOVERY_FSTAB := device/qcom/sdm670/recovery_non-AB_variant.fstab
+    TARGET_RECOVERY_FSTAB := device/qcom/sdm710/recovery_non-AB_variant.fstab
 endif
 
 #Enable compilation of oem-extensions to recovery
@@ -119,7 +119,7 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_analog_cdc.ko \
     $(KERNEL_MODULES_OUT)/audio_msm_sdw.ko \
     $(KERNEL_MODULES_OUT)/audio_native.ko \
-    $(KERNEL_MODULES_OUT)/audio_machine_sdm670.ko \
+    $(KERNEL_MODULES_OUT)/audio_machine_sdm710.ko \
     $(KERNEL_MODULES_OUT)/llcc_perfmon.ko \
     $(KERNEL_MODULES_OUT)/rdbg.ko \
     $(KERNEL_MODULES_OUT)/mpq-adapter.ko \

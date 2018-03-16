@@ -1,5 +1,5 @@
 #
-# system.prop for sdm670
+# system.prop for sdm710
 #
 
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
