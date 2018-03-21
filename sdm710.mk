@@ -147,6 +147,9 @@ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.software.midi.xml:syste
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/sdm710/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
+# Powerhint configuration file
+PRODUCT_COPY_FILES += device/qcom/sdm710/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
 # Camera configuration file. Shared by passthrough/binderized camera HAL
 PRODUCT_PACKAGES += camera.device@3.2-impl
 PRODUCT_PACKAGES += camera.device@1.0-impl
