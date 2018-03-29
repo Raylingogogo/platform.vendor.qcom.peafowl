@@ -40,8 +40,8 @@
        significantly, so should be measured on the shipping platform
        with a power meter. -->
   <item name="none">0</item>
-  <item name="screen.on">63</item>  <!-- ~200mA -->
-  <item name="screen.full">261</item>  <!-- ~300mA -->
+  <item name="screen.on">279</item>  <!-- ~200mA -->
+  <item name="screen.full">465</item>  <!-- ~300mA -->
 
   <!-- A list of heterogeneous CPU clusters, where the value for each cluster represents the
        number of CPU cores for that cluster.
@@ -126,7 +126,6 @@
       <value>1200</value>  <!-- ~1200mA -->
       <value>1300</value>  <!-- ~1300mA -->
       <value>1400</value>  <!-- ~1400mA -->
-
   </array>
 
   <!-- Current when CPU is awake -->
@@ -135,6 +134,53 @@
   <item name="cpu.idle">0.1</item>
 
   <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
-  <item name="battery.capacity">1000</item>
+  <item name="battery.capacity">2800</item>
+
+  <item name="wifi.on">0.5</item>  <!-- ~3mA -->
+  <item name="wifi.active">50</item>  <!-- WIFI data transfer, ~200mA -->
+  <item name="wifi.scan">20</item>  <!-- WIFI network scanning, ~100mA -->
+
+  <item name="dsp.audio">10</item> <!-- ~10mA -->
+  <item name="dsp.video">28</item> <!-- ~50mA -->
+
+  <item name="camera.flashlight">150</item> <!-- Avg. power for camera flash, ~160mA -->
+  <item name="camera.avg">250</item> <!-- Avg. power use of camera in standard usecases, ~550mA -->
+
+  <item name="gps.on">14</item> <!-- ~50mA -->
+
+  <item name="radio.active">50</item> <!-- ~200mA -->
+  <item name="radio.scanning">20</item>
+  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
+	  <value>4</value> <!-- ~2mA -->
+	  <value>2</value> <!-- ~1mA -->
+  </array>
+
+  <item name="modem.controller.idle">1</item>
+  <item name="modem.controller.rx">60</item>
+  <item name="modem.controller.tx">80</item>
+  <item name="modem.controller.voltage">610</item>
+
+  <array name="memory.bandwidths">
+	  <value>22.7</value> <!-- mA for bucket: 100mb/s-1.5 GB/s memory bandwidth -->
+  </array>
+
+  <item name="wifi.controller.idle">1</item>
+  <item name="wifi.controller.rx">40</item>
+  <item name="wifi.controller.tx">50</item>
+  <array name="wifi.controller.tx_levels">3 <!-- mA -->
+  </array>
+  <item name="wifi.controller.voltage">3300</item>
+
+  <array name="wifi.batchedscan"> <!-- mA -->
+	  <value>.0001</value> <!-- 1-8/hr -->
+	  <value>.001</value>  <!-- 9-64/hr -->
+	  <value>.01</value>   <!-- 65-512/hr -->
+	  <value>.1</value>    <!-- 513-4,096/hr -->
+	  <value>1</value>    <!-- 4097-/hr -->
+  </array>
+
+  <item name="bluetooth.active">56</item> <!-- Bluetooth data transfer, ~56mA -->
+  <item name="bluetooth.on">0.1</item>  <!-- Bluetooth on & connectable, but not connected, ~0.1mA -->
+  <item name="bluetooth.controller.voltage">3300</item>
 
 </device>
