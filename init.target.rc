@@ -205,7 +205,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #   user root
 #   group root
 
-service adsprpcd /vendor/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd rootpd
    class main
    user system
    group system
