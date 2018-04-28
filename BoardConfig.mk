@@ -125,6 +125,7 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_analog_cdc.ko \
     $(KERNEL_MODULES_OUT)/audio_msm_sdw.ko \
     $(KERNEL_MODULES_OUT)/audio_native.ko \
+    $(KERNEL_MODULES_OUT)/audio_aqt1000_cdc.ko \
     $(KERNEL_MODULES_OUT)/audio_machine_sdm710.ko \
     $(KERNEL_MODULES_OUT)/llcc_perfmon.ko \
     $(KERNEL_MODULES_OUT)/rdbg.ko \
