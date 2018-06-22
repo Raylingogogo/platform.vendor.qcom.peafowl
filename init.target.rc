@@ -72,6 +72,7 @@ on post-fs-data
     mkdir /persist/qti_fp 0700 system system
     mkdir /data/misc/seemp 0700 system system
     mkdir /data/vendor/tloc 0700 system drmrpc
+    mkdir /data/misc/qvr 0770 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -453,3 +454,13 @@ service smcinvoked /system/bin/smcinvoked
     class main
     user system
     group system
+
+# Add qvrservice,qvrservice_camera,qvrservice_hvx_camera sockets for qvrservice
+service qvrd /system/bin/qvrservice
+    class late_start
+    user system
+    group system camera graphics input
+    socket qvrservice stream 0666 system system
+    socket qvrservice_camera stream 0666 system system
+    socket qvrservice_hvx_camera stream 0660 system system
+    capabilities SYS_NICE
