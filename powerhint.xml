@@ -76,6 +76,114 @@
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
             0x41820000, 0x14"/>
 
+        <!-- qvr level cpu1 gpu1 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130A" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu1 gpu2 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130B" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu1 gpu3 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130C" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu2 gpu1 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130D" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu2 gpu2 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130E" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu2 gpu3 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x0000130F" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu3 gpu1 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x00001310" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu3 gpu2 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x00001311" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
+        <!-- qvr level cpu3 gpu3 -->
+        <!-- B CPU - Cluster min freq ~.825 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.5 Ghz -->
+        <!-- L CPU - Cluster min freq ~.576 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.70 Ghz -->
+        <!-- GPU - min pwrlevel 7 (freq 180 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 780 Mhz) -->
+        <Config
+            Id="0x00001312" Enable="true" Target="sdm710"
+            Resources="0x40800000, 0x553, 0x40804000, 0x9D3, 0x40800100, 0x240, 0x40804100, 0x6AC,
+            0x42804000, 0x7, 0x42808000, 0x0"/>
+
     </Powerhint>
 </HintConfigs>
 
